@@ -121,10 +121,9 @@
       <div class="card-body">
         <p class="card-text">
           <b><%= listing.title %></b> <br />
-          &#8377;<%= listing.price.toLocaleString("en-IN") %>/ night
-          <i class="tax-info" data-price="<%= listing.price %>">
-            &nbsp;&nbsp;+18% GST
-          </i>
+          <span class="listing-price" data-price="<%= listing.price %>">
+            &#8377;<%= listing.price.toLocaleString("en-IN") %>/ night
+          </span>
         </p>
       </div>
     </div>
