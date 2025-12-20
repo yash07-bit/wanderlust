@@ -1,0 +1,17 @@
+.show-img {
+  transition: transform 0.3s ease;
+}
+
+.show-img:hover {
+  transform: scale(1.01);
+}
+
+.listing-card {
+  padding: 1rem !important;
+}
+
+/* Reduces size of stars in reviews */
+.starability-result {
+  transform: scale(0.8);
+  transform-origin: left;
+}

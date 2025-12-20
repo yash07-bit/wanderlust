@@ -1,0 +1,85 @@
+/* Sticky and Horizontal Scroll for Filters */
+#filters {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.filters-center {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.filters-center::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.filter {
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  opacity: 0.7;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.filter:hover {
+  opacity: 1;
+  border-bottom: 2px solid #fe424d;
+}
+
+.filter i {
+  font-size: 1.25rem;
+}
+
+.filter p {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Tax Toggle Styling */
+.tax-toggle {
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  height: 3.25rem;
+  padding: 1rem;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  white-space: nowrap;
+}
+
+/* Card Improvements */
+.listing-card {
+  border: none !important;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  object-fit: cover !important;
+}
+
+.listing-link {
+  text-decoration: none;
+  color: #222;
+}
+
+.tax-label {
+  color: #fe424d;
+  font-weight: 600;
+}

@@ -1,7 +1,6 @@
 <% layout("layouts/boilerplate") %>
 
-<div id="filters">
-  <!-- DESKTOP FILTERS -->
+<div id="filters" class="container-fluid">
   <div class="filters-center d-none d-sm-flex">
     <div class="filter">
       <i class="fa-solid fa-fire"></i>
@@ -37,16 +36,15 @@
     </div>
   </div>
 
-  <!-- MOBILE FILTER DROPDOWN -->
-  <div class="dropdown d-block d-sm-none">
+  <div class="dropdown d-block d-sm-none w-50">
     <button
-      class="btn btn-outline-dark dropdown-toggle w-100"
+      class="btn btn-outline-dark dropdown-toggle w-100 rounded-pill"
       type="button"
       data-bs-toggle="dropdown"
     >
       <i class="fa-solid fa-filter"></i> Filters
     </button>
-    <ul class="dropdown-menu w-100">
+    <ul class="dropdown-menu">
       <li>
         <a class="dropdown-item" href="#"
           ><i class="fa-solid fa-fire me-2"></i> Trending</a
@@ -62,36 +60,10 @@
           ><i class="fa-solid fa-city me-2"></i> Iconic Cities</a
         >
       </li>
-      <li>
-        <a class="dropdown-item" href="#"
-          ><i class="fa-solid fa-mountain me-2"></i> Mountains</a
-        >
-      </li>
-      <li>
-        <a class="dropdown-item" href="#"
-          ><i class="fa-brands fa-fort-awesome me-2"></i> Castles</a
-        >
-      </li>
-      <li>
-        <a class="dropdown-item" href="#"
-          ><i class="fa-solid fa-snowflake me-2"></i> Arctic</a
-        >
-      </li>
-      <li>
-        <a class="dropdown-item" href="#"
-          ><i class="fa-solid fa-tractor me-2"></i> Farms</a
-        >
-      </li>
-      <li>
-        <a class="dropdown-item" href="#"
-          ><i class="fa-solid fa-tent me-2"></i> Camping</a
-        >
-      </li>
     </ul>
   </div>
 
-  <!-- TAX TOGGLE -->
-  <div class="tax-toggle">
+  <div class="tax-toggle shadow-sm d-none d-lg-flex">
     <div class="form-check-reverse form-switch">
       <input
         class="form-check-input"
@@ -99,52 +71,51 @@
         role="switch"
         id="switchCheckDefault"
       />
-      <label class="form-check-label" for="switchCheckDefault"
+      <label class="form-check-label fw-semibold" for="switchCheckDefault"
         >Display total after taxes</label
       >
     </div>
   </div>
 </div>
 
-<!-- LISTINGS -->
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-  <% for(let listing of allListings) { %>
-  <a href="/listings/<%= listing._id %>" class="listing-link">
-    <div class="card col listing-card">
-      <img
-        src="<%= listing.image.url %>"
-        class="card-img-top"
-        alt="listing_image"
-        style="height: 20rem"
-      />
-      <div class="card-img-overlay"></div>
-      <div class="card-body">
-        <p class="card-text">
-          <b><%= listing.title %></b> <br />
-          <span class="listing-price" data-price="<%= listing.price %>">
-            &#8377;<%= listing.price.toLocaleString("en-IN") %>/ night
-          </span>
-        </p>
+<div class="container mt-4">
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% for(let listing of allListings) { %>
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card listing-card h-100">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top shadow-sm"
+          alt="listing_image"
+          style="height: 18rem"
+        />
+        <div class="card-body px-0 py-2">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0 fw-bold"><%= listing.title %></h5>
+            <span class="small text-muted"
+              ><i class="fa-solid fa-star text-dark"></i> 4.9</span
+            >
+          </div>
+          <p class="card-text text-muted mb-1">
+            <%= listing.location %>, <%= listing.country %>
+          </p>
+          <p class="card-text">
+            <span class="base-price fw-bold">
+              &#8377;<%= listing.price.toLocaleString("en-IN") %>
+              <span class="fw-normal text-muted">/ night</span>
+            </span>
+            <span class="tax-info" style="display: none">
+              <span class="fw-bold text-dark"
+                >&#8377;<%= (listing.price * 1.18).toLocaleString("en-IN")
+                %></span
+              >
+              <span class="text-muted fw-normal">/ night</span>
+              <small class="tax-label ms-1">inc. tax</small>
+            </span>
+          </p>
+        </div>
       </div>
-    </div>
-  </a>
-  <% } %>
+    </a>
+    <% } %>
+  </div>
 </div>
-
-<script>
-  const taxSwitch = document.getElementById("switchCheckDefault");
-  const taxInfo = document.getElementsByClassName("tax-info");
-
-  taxSwitch.addEventListener("change", () => {
-    for (let info of taxInfo) {
-      const basePrice = Number(info.dataset.price);
-      if (taxSwitch.checked) {
-        info.textContent = `₹${(basePrice * 1.18).toLocaleString(
-          "en-IN"
-        )}/ night`;
-      } else {
-        info.textContent = `₹${basePrice.toLocaleString("en-IN")}/ night`;
-      }
-    }
-  });
-</script>
