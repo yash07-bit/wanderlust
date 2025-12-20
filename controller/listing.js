@@ -73,11 +73,11 @@ module.exports.deleteListing = async (req, res) => {
 // controller/listing.js
 
 module.exports.searchListing = async (req, res) => {
-  const { search } = req.query;
+  const { search, category } = req.query; // Capture both search and filter category
   let allListings;
 
   if (search) {
-    // 1. Filtered Search
+    // SCENARIO 1: Search is active
     allListings = await Listing.find({
       $or: [
         { title: { $regex: search, $options: "i" } },
@@ -85,14 +85,18 @@ module.exports.searchListing = async (req, res) => {
         { country: { $regex: search, $options: "i" } },
       ],
     });
+  } else if (category) {
+    // SCENARIO 2: A Filter/Category icon was clicked
+    // This assumes your Listing Schema has a 'category' field
+    allListings = await Listing.find({ category: category });
   } else {
-    // 2. Default: Show all
+    // SCENARIO 3: Show everything (Default)
     allListings = await Listing.find({});
   }
 
-  // Handle case where nothing is found
-  if (allListings.length === 0 && search) {
-    req.flash("error", "No listings match your search!");
+  // Handle "Not Found" for both search and filters
+  if (allListings.length === 0) {
+    req.flash("error", "No listings found for your request!");
     return res.redirect("/listings");
   }
 
