@@ -9,7 +9,10 @@
   z-index: 10;
   border-bottom: 1px solid #ebebeb;
 }
-
+#filters a {
+  color: #000 !important; /* black text */
+  text-decoration: none !important; /* no underline */
+}
 .filters-center {
   display: flex;
   overflow-x: auto;
@@ -23,6 +26,7 @@
 }
 
 .filter {
+  text-decoration: none;
   text-align: center;
   margin-right: 2rem;
   margin-top: 1rem;
@@ -41,6 +45,7 @@
 }
 
 .filter p {
+  text-decoration: none;
   font-size: 0.8rem;
   margin-top: 0.5rem;
 }
@@ -48,7 +53,7 @@
 /* Tax Toggle Styling */
 .tax-toggle {
   border: 1px solid #ccc;
-  border-radius: 1rem;
+  border-radius: 2rem;
   height: 3.25rem;
   padding: 1rem;
   margin-left: auto;

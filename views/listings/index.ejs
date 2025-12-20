@@ -2,38 +2,54 @@
 
 <div id="filters" class="container-fluid">
   <div class="filters-center d-none d-sm-flex">
-    <div class="filter">
-      <i class="fa-solid fa-fire"></i>
-      <p>Trending</p>
-    </div>
-    <div class="filter">
-      <i class="fa-solid fa-bed"></i>
-      <p>Rooms</p>
-    </div>
-    <div class="filter">
-      <i class="fa-solid fa-city"></i>
-      <p>Iconic Cities</p>
-    </div>
-    <div class="filter">
-      <i class="fa-solid fa-mountain"></i>
-      <p>Mountains</p>
-    </div>
-    <div class="filter">
-      <i class="fa-brands fa-fort-awesome"></i>
-      <p>Castles</p>
-    </div>
-    <div class="filter">
-      <i class="fa-solid fa-snowflake"></i>
-      <p>Arctic</p>
-    </div>
-    <div class="filter">
-      <i class="fa-solid fa-tractor"></i>
-      <p>Farms</p>
-    </div>
-    <div class="filter">
-      <i class="fa-solid fa-tent"></i>
-      <p>Camping</p>
-    </div>
+    <a href="/listings?category=Trending">
+      <div class="filter">
+        <i class="fa-solid fa-fire"></i>
+        <p>Trending</p>
+      </div>
+    </a>
+    <a href="/listings?category=Rooms">
+      <div class="filter">
+        <i class="fa-solid fa-bed"></i>
+        <p>Rooms</p>
+      </div>
+    </a>
+    <a href="/listings?category=IconicCities">
+      <div class="filter">
+        <i class="fa-solid fa-city"></i>
+        <p>Iconic Cities</p>
+      </div>
+    </a>
+    <a href="/listings?category=Mountains">
+      <div class="filter">
+        <i class="fa-solid fa-mountain"></i>
+        <p>Mountains</p>
+      </div>
+    </a>
+    <a href="/listings?category=Castles">
+      <div class="filter">
+        <i class="fa-brands fa-fort-awesome"></i>
+        <p>Castles</p>
+      </div>
+    </a>
+    <a href="/listings?category=Arctic">
+      <div class="filter">
+        <i class="fa-solid fa-snowflake"></i>
+        <p>Arctic</p>
+      </div>
+    </a>
+    <a href="/listings?category=Farms">
+      <div class="filter">
+        <i class="fa-solid fa-tractor"></i>
+        <p>Farms</p>
+      </div>
+    </a>
+    <a href="/listings?category=Camping">
+      <div class="filter">
+        <i class="fa-solid fa-tent"></i>
+        <p>Camping</p>
+      </div>
+    </a>
   </div>
 
   <div class="dropdown d-block d-sm-none w-50">
@@ -46,17 +62,17 @@
     </button>
     <ul class="dropdown-menu">
       <li>
-        <a class="dropdown-item" href="#"
+        <a class="dropdown-item" href="/listings?category=Trending"
           ><i class="fa-solid fa-fire me-2"></i> Trending</a
         >
       </li>
       <li>
-        <a class="dropdown-item" href="#"
+        <a class="dropdown-item" href="/listings?category=Rooms"
           ><i class="fa-solid fa-bed me-2"></i> Rooms</a
         >
       </li>
       <li>
-        <a class="dropdown-item" href="#"
+        <a class="dropdown-item" href="/listings?category=IconicCities"
           ><i class="fa-solid fa-city me-2"></i> Iconic Cities</a
         >
       </li>
@@ -79,15 +95,16 @@
 </div>
 
 <div class="container mt-4">
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-    <% for(let listing of allListings) { %>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+    <% if (allListings && allListings.length > 0) { %> <% for(let listing of
+    allListings) { %>
     <a href="/listings/<%= listing._id %>" class="listing-link">
-      <div class="card listing-card h-100">
+      <div class="card listing-card h-100 border-0">
         <img
           src="<%= listing.image.url %>"
           class="card-img-top shadow-sm"
           alt="listing_image"
-          style="height: 18rem"
+          style="height: 18rem; border-radius: 1rem"
         />
         <div class="card-body px-0 py-2">
           <div class="d-flex justify-content-between align-items-center">
@@ -100,22 +117,39 @@
             <%= listing.location %>, <%= listing.country %>
           </p>
           <p class="card-text">
-            <span class="base-price fw-bold">
-              &#8377;<%= listing.price.toLocaleString("en-IN") %>
-              <span class="fw-normal text-muted">/ night</span>
-            </span>
+            <span class="base-price fw-bold"
+              >&#8377;<%= listing.price.toLocaleString("en-IN") %>
+              <span class="fw-normal text-muted">/ night</span></span
+            >
             <span class="tax-info" style="display: none">
               <span class="fw-bold text-dark"
                 >&#8377;<%= (listing.price * 1.18).toLocaleString("en-IN")
                 %></span
               >
               <span class="text-muted fw-normal">/ night</span>
-              <small class="tax-label ms-1">inc. tax</small>
+              <small class="tax-label ms-1 text-danger fw-bold">inc. tax</small>
             </span>
           </p>
         </div>
       </div>
     </a>
+    <% } %> <% } else { %>
+    <div class="col-12 text-center my-5 py-5">
+      <div class="no-results-icon mb-4">
+        <i
+          class="fa-solid fa-magnifying-glass-location"
+          style="font-size: 5rem; color: #fe424d; opacity: 0.3"
+        ></i>
+      </div>
+      <h2 class="fw-bold">No results found</h2>
+      <p class="text-muted">
+        We couldn't find any listings for this category. Try exploring other
+        destinations!
+      </p>
+      <a href="/listings" class="btn btn-dark rounded-pill px-4 py-2 mt-3"
+        >Show all listings
+      </a>
+    </div>
     <% } %>
   </div>
 </div>
