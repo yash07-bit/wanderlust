@@ -1,25 +1,36 @@
 <% layout("layouts/boilerplate") %>
+
 <style>
+  /* MAIN FILTER CONTAINER */
   #filters {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
   }
 
-  /* CENTER FILTERS */
+  /* DESKTOP FILTERS */
   .filters-center {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    flex: 1;
+    gap: 1.2rem;
   }
 
-  /* INDIVIDUAL FILTER */
   .filter {
     text-align: center;
-    margin: 2rem 1.5rem;
     opacity: 0.7;
+    min-width: 70px;
+  }
+
+  .filter i {
+    font-size: 1.3rem;
+  }
+
+  .filter p {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
   }
 
   .filter:hover {
@@ -27,11 +38,11 @@
     cursor: pointer;
   }
 
-  /* TAX TOGGLE RIGHT */
+  /* TAX TOGGLE */
   .tax-toggle {
     border: 1px solid black;
     border-radius: 1rem;
-    height: 3.5rem;
+    height: 3.2rem;
     padding: 0 1rem;
     display: flex;
     align-items: center;
@@ -41,52 +52,126 @@
   .tax-info {
     display: none;
   }
+
+  /* MOBILE FILTER DROPDOWN */
+  .dropdown .dropdown-menu i {
+    width: 20px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 576px) {
+    .filters-center {
+      display: none !important; /* hide desktop filters */
+    }
+
+    .dropdown {
+      display: block !important; /* show dropdown */
+      width: 100%;
+    }
+
+    .dropdown-menu {
+      width: 100%;
+    }
+
+    .tax-toggle {
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+  }
 </style>
+
 <div id="filters">
-  <!-- CENTER FILTERS -->
-  <div class="filters-center">
+  <!-- DESKTOP FILTERS -->
+  <div class="filters-center d-none d-sm-flex">
     <div class="filter">
-      <div><i class="fa-solid fa-fire"></i></div>
+      <i class="fa-solid fa-fire"></i>
       <p>Trending</p>
     </div>
-
     <div class="filter">
-      <div><i class="fa-solid fa-bed"></i></div>
+      <i class="fa-solid fa-bed"></i>
       <p>Rooms</p>
     </div>
-
     <div class="filter">
-      <div><i class="fa-solid fa-city"></i></div>
+      <i class="fa-solid fa-city"></i>
       <p>Iconic Cities</p>
     </div>
-
     <div class="filter">
-      <div><i class="fa-solid fa-mountain"></i></div>
+      <i class="fa-solid fa-mountain"></i>
       <p>Mountains</p>
     </div>
-
     <div class="filter">
-      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <i class="fa-brands fa-fort-awesome"></i>
       <p>Castles</p>
     </div>
-
     <div class="filter">
-      <div><i class="fa-solid fa-snowflake"></i></div>
+      <i class="fa-solid fa-snowflake"></i>
       <p>Arctic</p>
     </div>
-
     <div class="filter">
-      <div><i class="fa-solid fa-tractor"></i></div>
+      <i class="fa-solid fa-tractor"></i>
       <p>Farms</p>
     </div>
-
     <div class="filter">
-      <div><i class="fa-solid fa-tent"></i></div>
+      <i class="fa-solid fa-tent"></i>
       <p>Camping</p>
     </div>
   </div>
 
-  <!-- RIGHT TAX TOGGLE -->
+  <!-- MOBILE FILTER DROPDOWN -->
+  <div class="dropdown d-block d-sm-none">
+    <button
+      class="btn btn-outline-dark dropdown-toggle w-100"
+      type="button"
+      data-bs-toggle="dropdown"
+    >
+      <i class="fa-solid fa-filter"></i> Filters
+    </button>
+    <ul class="dropdown-menu w-100">
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-solid fa-fire me-2"></i> Trending</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-solid fa-bed me-2"></i> Rooms</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-solid fa-city me-2"></i> Iconic Cities</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-solid fa-mountain me-2"></i> Mountains</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-brands fa-fort-awesome me-2"></i> Castles</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-solid fa-snowflake me-2"></i> Arctic</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-solid fa-tractor me-2"></i> Farms</a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item" href="#"
+          ><i class="fa-solid fa-tent me-2"></i> Camping</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <!-- TAX TOGGLE -->
   <div class="tax-toggle">
     <div class="form-check-reverse form-switch">
       <input
@@ -95,13 +180,14 @@
         role="switch"
         id="switchCheckDefault"
       />
-      <label class="form-check-label" for="switchCheckDefault">
-        Display total after taxes
-      </label>
+      <label class="form-check-label" for="switchCheckDefault"
+        >Display total after taxes</label
+      >
     </div>
   </div>
 </div>
 
+<!-- LISTINGS -->
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
   <% for(let listing of allListings) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
@@ -115,25 +201,23 @@
       <div class="card-img-overlay"></div>
       <div class="card-body">
         <p class="card-text">
-          <b><%= listing.title%></b> <br />
-          &#8377;<%= listing.price.toLocaleString("en-IN")%>/ night
+          <b><%= listing.title %></b> <br />
+          &#8377;<%= listing.price.toLocaleString("en-IN") %>/ night
           <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
         </p>
       </div>
-    </div></a
-  >
+    </div>
+  </a>
   <% } %>
 </div>
+
 <script>
-  let taxSwitch = document.getElementById("switchCheckDefault");
-  taxSwitch.addEventListener("click", () => {
-    let taxInfo = document.getElementsByClassName("tax-info");
-    for (info of taxInfo) {
-      if (info.style.display != "inline") {
-        info.style.display = "inline";
-      } else {
-        info.style.display = "none";
-      }
+  const taxSwitch = document.getElementById("switchCheckDefault");
+  const taxInfo = document.getElementsByClassName("tax-info");
+
+  taxSwitch.addEventListener("change", () => {
+    for (let info of taxInfo) {
+      info.style.display = taxSwitch.checked ? "inline" : "none";
     }
   });
 </script>
