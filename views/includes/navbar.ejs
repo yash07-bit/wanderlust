@@ -1,30 +1,81 @@
 <style>
-  .search-btn {
-    background-color: #fe424d;
-    color: #ebebeb;
-    border-radius: 25px;
+  /* --- Navbar Styling --- */
+  .navbar {
+    height: 5rem;
+    background-color: white !important;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
   }
-  .search-btn:hover {
-    background-color: #fe424d;
-    color: #ebebeb;
+
+  .navbar-brand {
+    color: #fe424d !important;
+    font-size: 2rem;
   }
-  .search-btn i {
-    display: inline;
-    margin-right: 0.5rem;
+
+  /* --- Refined Search Bar --- */
+  .search-container {
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    padding: 0.2rem 0.5rem 0.2rem 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+    background-color: white;
   }
+
+  .search-container:hover {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  }
+
   .search-inp {
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: 250px;
+  }
+
+  .search-btn {
+    background-color: #fe424d !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 32px;
+    height: 32px;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* --- Navigation Links --- */
+  .nav-link {
+    color: #222222 !important;
+    font-size: 0.9rem;
+    font-weight: 500 !important;
+    margin: 0 0.5rem;
+  }
+
+  .nav-link:hover {
+    color: #fe424d !important;
+  }
+
+  /* --- Explore text hidden on small search --- */
+  @media (max-width: 991px) {
+    .search-inp {
+      width: 150px;
+    }
+    .navbar {
+      height: auto;
+      padding: 0.5rem 0;
+    }
   }
 </style>
-<nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top">
-  <div class="container-fluid">
-    <!-- Brand -->
+
+<nav class="navbar navbar-expand-md sticky-top">
+  <div class="container-fluid px-md-5">
     <a class="navbar-brand" href="/">
-      <i class="fa-regular fa-compass"></i>
+      <i class="fa-solid fa-compass"></i>
     </a>
 
-    <!-- Toggler -->
     <button
       class="navbar-toggler"
       type="button"
@@ -34,36 +85,61 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar Content -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <!-- Left Links -->
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
-
-      <!-- Center Search -->
-      <div class="navbar-nav ms-auto">
-        <form class="d-flex mx-auto" role="search">
+      <div class="navbar-nav ms-auto me-auto">
+        <form
+          class="d-flex search-container align-items-center"
+          role="search"
+          action="/listings"
+          method="GET"
+        >
           <input
-            class="form-control me-2 search-inp"
+            class="form-control search-inp"
+            name="search"
             type="search"
-            placeholder="Search Destination"
+            placeholder="Search destinations"
+            aria-label="Search"
           />
           <button class="btn search-btn" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>Search
+            <i
+              class="fa-solid fa-magnifying-glass"
+              style="font-size: 0.8rem"
+            ></i>
           </button>
         </form>
       </div>
 
-      <!-- Right Links -->
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Add New Listing</a>
+      <div class="navbar-nav ms-auto align-items-center">
+        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings/new">Wanderlust your home</a>
 
         <% if (!currUser) { %>
         <a class="nav-link" href="/signup"><b>Sign up</b></a>
-        <a class="nav-link" href="/login"><b>Log in</b></a>
+        <a class="nav-link text-decoration-none" href="/login">
+          <div
+            class="btn btn-outline-dark rounded-pill px-3 py-1"
+            style="font-size: 0.8rem; font-weight: 600"
+          >
+            Log in
+          </div>
+        </a>
         <% } else { %>
-        <a class="nav-link" href="/logout"><b>Log out</b></a>
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle d-flex align-items-center"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            <i class="fa-solid fa-circle-user fs-4"></i>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
+            style="border-radius: 1rem"
+          >
+            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+          </ul>
+        </div>
         <% } %>
       </div>
     </div>

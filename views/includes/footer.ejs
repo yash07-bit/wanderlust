@@ -1,15 +1,148 @@
+<style>
+  footer {
+    background-color: #f7f7f7;
+    border-top: 1px solid #dddddd;
+    padding: 3rem 0 2rem 0;
+    margin-top: 4rem;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .footer-section h5 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #484848;
+    font-size: 0.9rem;
+    transition: 0.2s;
+  }
+
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .f-info-brand {
+    color: #717171;
+    font-size: 0.9rem;
+  }
+
+  .f-info-links a {
+    color: #222222;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 15px;
+  }
+
+  .f-info-socials {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .f-info-socials i {
+    font-size: 1.2rem;
+    color: #222222;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+
+  .f-info-socials i:hover {
+    color: #fe424d; /* Brand Color */
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    .footer-bottom {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+    .footer-content {
+      text-align: center;
+    }
+  }
+</style>
+
 <footer>
-  <div class="f-info">
-    <div class="f-info-socials">
-      <i class="fa-brands fa-square-facebook"></i
-      ><i class="fa-brands fa-square-instagram"></i
-      ><i class="fa-brands fa-square-linkedin"></i>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">AirCover</a></li>
+          <li><a href="#">Anti-discrimination</a></li>
+          <li><a href="#">Disability support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5>Hosting</h5>
+        <ul>
+          <li><a href="/listings/new">Wanderlust your home</a></li>
+          <li><a href="#">Hosting resources</a></li>
+          <li><a href="#">Community forum</a></li>
+          <li><a href="#">Hosting responsibly</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h5>Wanderlust</h5>
+        <ul>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="#">New features</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Investors</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="f-info-brand">&copy;WanderLust Private Limited</div>
-    <div class="f-info-links">
-      <a href="/privacy">Privacy</a>
-      &nbsp;
-      <a href="/terms">Terms</a>
+
+    <div class="footer-bottom">
+      <div class="d-flex flex-column flex-md-row align-items-center">
+        <div class="f-info-brand">&copy; 2025 Wanderlust Private Limited</div>
+        <div class="f-info-links ms-md-3 mt-2 mt-md-0">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+
+      <div class="f-info-socials">
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-square-linkedin"></i>
+        <i class="fa-brands fa-square-twitter"></i>
+      </div>
     </div>
   </div>
 </footer>
