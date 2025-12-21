@@ -1,17 +1,22 @@
-const cloudinary = require("cloudinary").v2;
+// 1. Import cloudinary (the main object)
+const cloudinary = require("cloudinary");
+
+// 2. Import CloudinaryStorage using destructuring
 const CloudinaryStorage = require("multer-storage-cloudinary");
 
+// 3. Configure cloudinary
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET,
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECERT,
 });
 
+// 4. Create the storage engine (this line will now work)
 const storage = new CloudinaryStorage({
-  cloudinary,
+  cloudinary: cloudinary,
   params: {
-    folder: "WonderLust_DEV",
-    allowedFormats: ["png", "jpg", "jpeg"],
+    folder: "wonderlust",
+    allowed_formats: ["jpg", "jpeg", "png"],
   },
 });
 

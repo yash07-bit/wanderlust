@@ -11,7 +11,7 @@ router
   // signup form
   .get(userController.renderNewFrom)
   // signup logic
-  .post(wrapAsync(userController.signup));
+  .post(saveRedirectUrl, wrapAsync(userController.signup));
 
 router
   .route("/login")

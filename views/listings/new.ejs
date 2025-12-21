@@ -21,7 +21,6 @@
             class="form-control border-secondary-subtle"
             required
           />
-          <div class="valid-feedback">Title looks great!</div>
           <div class="invalid-feedback">Please provide a catchy title.</div>
         </div>
 
@@ -44,7 +43,7 @@
           <div class="input-group">
             <input
               type="file"
-              name="listing[image]"
+              name="image"
               class="form-control border-secondary-subtle"
               id="imageUpload"
               required
@@ -53,9 +52,29 @@
           <small class="text-muted"
             >High-quality photos help your listing stand out.</small
           >
-          <div class="invalid-feedback">
-            Please upload an image for your listing.
-          </div>
+          <div class="invalid-feedback">Please upload an image.</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="category" class="form-label fw-semibold">Category</label>
+          <select
+            name="listing[category]"
+            class="form-select border-secondary-subtle"
+            required
+          >
+            <option value="" selected disabled>Select a category</option>
+            <option value="Trending">Trending</option>
+            <option value="Rooms">Rooms</option>
+            <option value="Iconic Cities">Iconic Cities</option>
+            <option value="Mountains">Mountains</option>
+            <option value="Castles">Castles</option>
+            <option value="Amazing Pools">Amazing Pools</option>
+            <option value="Camping">Camping</option>
+            <option value="Farms">Farms</option>
+            <option value="Arctic">Arctic</option>
+            <option value="Boats">Boats</option>
+          </select>
+          <div class="invalid-feedback">Please select a category.</div>
         </div>
 
         <div class="row">

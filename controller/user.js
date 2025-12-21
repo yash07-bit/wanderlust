@@ -1,6 +1,8 @@
 const User = require("../models/user.js");
 
 module.exports.renderNewFrom = (req, res) => {
+  const fullUrl = new URL(req.headers.referer);
+  req.session.redirectUrl = fullUrl.pathname;
   res.render("users/signup.ejs");
 };
 
@@ -14,8 +16,8 @@ module.exports.signup = async (req, res, next) => {
       if (err) return next(err);
 
       req.flash("success", "Welcome to Wonderlust!");
-      const redirectUrl = req.session.redirectUrl || "/listings";
-      delete req.session.redirectUrl;
+
+      const redirectUrl = res.locals.redirectUrl || "/";
       res.redirect(redirectUrl);
     });
   } catch (err) {
@@ -25,12 +27,14 @@ module.exports.signup = async (req, res, next) => {
 };
 
 module.exports.renderLoginFrom = (req, res) => {
+  const fullUrl = new URL(req.headers.referer);
+  req.session.redirectUrl = fullUrl.pathname;
   res.render("users/login.ejs");
 };
 
 module.exports.login = (req, res) => {
   req.flash("success", "Welcome back to Wonderlust!");
-  const redirectUrl = res.locals.redirectUrl || "/listings";
+  const redirectUrl = res.locals.redirectUrl || "/";
   res.redirect(redirectUrl);
 };
 
@@ -38,6 +42,6 @@ module.exports.logout = (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
     req.flash("success", "You are logged out");
-    res.redirect("/listings");
+    res.redirect("/");
   });
 };
