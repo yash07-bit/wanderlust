@@ -52,6 +52,8 @@
     padding-top: 2rem;
     flex-wrap: wrap;
     gap: 1rem;
+    flex-direction: column-reverse;
+    text-align: center;
   }
 
   .f-info-brand {
@@ -84,14 +86,17 @@
     transform: translateY(-3px);
   }
 
-  @media (max-width: 768px) {
-    .footer-bottom {
-      flex-direction: column-reverse;
-      text-align: center;
-    }
-    .footer-content {
-      text-align: center;
-    }
+  .footer-copy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex-direction: row;
+    text-align: center;
+  }
+  .footer-content {
+    text-align: center;
   }
 </style>
 
@@ -128,7 +133,9 @@
     </div>
 
     <div class="footer-bottom">
-      <div class="d-flex flex-column flex-md-row align-items-center">
+      <div
+        class="d-flex flex-column footer-copy flex-md-row align-items-center"
+      >
         <div class="f-info-brand">&copy; 2025 Wanderlust Private Limited</div>
         <div class="f-info-links ms-md-3 mt-2 mt-md-0">
           <a href="/privacy">Privacy</a>
