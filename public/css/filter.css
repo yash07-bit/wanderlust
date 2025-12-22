@@ -88,3 +88,9 @@
   color: #fe424d;
   font-weight: 600;
 }
+
+.dropdown-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

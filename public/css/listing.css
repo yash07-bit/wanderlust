@@ -1,5 +1,7 @@
 .show-img {
   transition: transform 0.3s ease;
+  width: 100%;
+  border-radius: 1rem;
 }
 
 .show-img:hover {
@@ -8,10 +10,41 @@
 
 .listing-card {
   padding: 1rem !important;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
 
 /* Reduces size of stars in reviews */
 .starability-result {
   transform: scale(0.8);
   transform-origin: left;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+  .listing-card {
+    margin: 0 0.5rem;
+    padding: 0.8rem !important;
+  }
+
+  .show-img {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .btns {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .btns a,
+  .btns button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-body {
+    padding: 0.8rem !important;
+  }
 }
