@@ -9,7 +9,7 @@
         src="<%= listing.image.url %>"
         class="card-img-top show-img"
         alt="listing_image"
-        style="height: 350px; object-fit: cover"
+        style="height: 350px; object-fit: cover; border-radius: 1rem 1rem 0 0"
       />
       <div class="card-body px-0">
         <p class="text-muted mt-2">
@@ -40,7 +40,6 @@
       >
         Edit Listing
       </a>
-
       <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
         <button class="btn btn-outline-danger px-4">Delete</button>
       </form>
@@ -58,7 +57,7 @@
       class="needs-validation"
     >
       <div class="mb-3 mt-3">
-        <label for="rating" class="form-label">Rating</label>
+        <label class="form-label">Rating</label>
         <fieldset class="starability-slot">
           <input
             type="radio"
@@ -127,29 +126,37 @@
     </form>
     <% } %> <% if(listing.reviews.length > 0) { %>
     <div class="row mt-4">
-      <div class="col-12 col-md-8">
+      <div class="col-12">
         <p class="fs-5 fw-bold">All Reviews</p>
-        <% for(review of listing.reviews) { %>
-        <div class="card mb-3 shadow-sm border-light-subtle rounded-3">
-          <div class="card-body">
-            <h6 class="card-title fw-bold">@<%= review.author.username %></h6>
-            <p
-              class="starability-result card-text scale-down"
-              data-rating="<%=review.rating%>"
-            ></p>
-            <p class="card-text text-secondary"><%=review.comment %></p>
+        <div class="row">
+          <% for(review of listing.reviews) { %>
+          <div class="col-12 col-md-6 mb-3">
+            <div class="card shadow-sm border-light-subtle rounded-3 h-100">
+              <div class="card-body">
+                <h6 class="card-title fw-bold">
+                  @<%= review.author.username %>
+                </h6>
+                <p
+                  class="starability-result card-text"
+                  data-rating="<%=review.rating%>"
+                ></p>
+                <p class="card-text text-secondary"><%=review.comment %></p>
 
-            <% if (currUser && review.author._id.equals(currUser._id)) { %>
-            <form
-              action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-              method="post"
-            >
-              <button class="btn btn-sm btn-outline-danger mt-2">Delete</button>
-            </form>
-            <% } %>
+                <% if (currUser && review.author._id.equals(currUser._id)) { %>
+                <form
+                  action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                  method="post"
+                >
+                  <button class="btn btn-sm btn-outline-danger mt-2">
+                    Delete
+                  </button>
+                </form>
+                <% } %>
+              </div>
+            </div>
           </div>
+          <% } %>
         </div>
-        <% } %>
       </div>
     </div>
     <% } %>

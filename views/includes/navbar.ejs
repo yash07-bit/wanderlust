@@ -9,9 +9,14 @@
   .navbar-brand {
     color: #fe424d !important;
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    text-decoration: none !important;
+    font-weight: 700;
   }
 
-  /* --- Refined Search Bar --- */
+  /* --- Centered and Larger Search Bar --- */
   .search-container {
     border: 1px solid #ccc;
     border-radius: 40px;
@@ -19,6 +24,10 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
     transition: 0.3s ease;
     background-color: white;
+    /* Increased width and centering */
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
   }
 
   .search-container:hover {
@@ -29,17 +38,17 @@
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    width: 250px;
+    width: 100%; /* Spans the container */
   }
 
   .search-btn {
     background-color: #fe424d !important;
     color: white !important;
     border-radius: 50% !important;
-    width: 32px;
-    height: 32px;
+    min-width: 36px;
+    height: 36px;
     padding: 0 !important;
     display: flex;
     align-items: center;
@@ -51,22 +60,22 @@
     color: #222222 !important;
     font-size: 0.9rem;
     font-weight: 500 !important;
-    margin: 0 0.5rem;
+    white-space: nowrap;
   }
 
-  .nav-link:hover {
-    color: #fe424d !important;
-  }
-
-  /* --- Explore text hidden on small search --- */
+  /* Responsive fixes */
   @media (max-width: 991px) {
-    .search-inp {
-      width: 150px;
-    }
     .navbar {
       height: auto;
       padding: 0.5rem 0;
     }
+    .search-container {
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+    .navbar-brand span {
+      display: inline;
+    } /* Keep text visible */
   }
 </style>
 
@@ -74,6 +83,7 @@
   <div class="container-fluid px-md-5">
     <a class="navbar-brand" href="/">
       <i class="fa-solid fa-compass"></i>
+      <span style="font-size: 1.5rem; letter-spacing: -1px">Wanderlust</span>
     </a>
 
     <button
@@ -86,9 +96,9 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="navbar-nav box ms-auto me-auto">
+      <div class="navbar-nav flex-grow-1">
         <form
-          class="d-flex search-container w-sm-100 align-items-center"
+          class="d-flex search-container align-items-center"
           role="search"
           action="/listings"
           method="GET"
@@ -103,14 +113,14 @@
           <button class="btn search-btn" type="submit">
             <i
               class="fa-solid fa-magnifying-glass"
-              style="font-size: 0.8rem"
+              style="font-size: 0.9rem"
             ></i>
           </button>
         </form>
       </div>
 
-      <div class="navbar-nav ms-auto align-items-center">
-        <a class="nav-link" href="/listings">Explore</a>
+      <div class="navbar-nav align-items-center">
+        <a class="nav-link" id="redirectBtn" href="/listings">Explore</a>
         <a class="nav-link" href="/listings/new">Wanderlust your home</a>
 
         <% if (!currUser) { %>
