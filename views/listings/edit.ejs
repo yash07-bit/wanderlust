@@ -1,8 +1,8 @@
 <% layout("layouts/boilerplate") %>
 
-<div class="row mt-3">
-  <div class="col-8 offset-2">
-    <div class="card shadow-sm border-0 rounded-4 p-4 mb-5">
+<div class="row mt-3 px-3">
+  <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <div class="card shadow-sm border-0 rounded-4 p-3 p-md-4 mb-5">
       <h3 class="fw-bold mb-4 text-center">Edit Your Listing</h3>
 
       <form
@@ -16,6 +16,7 @@
           <label for="title" class="form-label fw-semibold">Title</label>
           <input
             type="text"
+            id="title"
             name="listing[title]"
             value="<%= listing.title %>"
             placeholder="Give your place a catchy name"
@@ -30,6 +31,7 @@
             >Description</label
           >
           <textarea
+            id="description"
             name="listing[description]"
             class="form-control border-secondary-subtle"
             rows="5"
@@ -47,7 +49,7 @@
           <div class="mb-3">
             <img
               src="<%= listing.image.url %>"
-              class="img-thumbnail shadow-sm rounded-3"
+              class="img-thumbnail shadow-sm rounded-3 img-fluid"
               style="max-height: 200px; display: block"
               alt="current_image"
             />
@@ -57,6 +59,7 @@
           >
           <input
             type="file"
+            id="image"
             name="listing[image]"
             class="form-control border-secondary-subtle"
           />
@@ -76,6 +79,7 @@
               >
               <input
                 type="number"
+                id="price"
                 name="listing[price]"
                 value="<%= listing.price %>"
                 class="form-control border-secondary-subtle"
@@ -89,6 +93,7 @@
             <label for="country" class="form-label fw-semibold">Country</label>
             <input
               type="text"
+              id="country"
               name="listing[country]"
               value="<%= listing.country %>"
               class="form-control border-secondary-subtle"
@@ -102,6 +107,7 @@
           <label for="location" class="form-label fw-semibold">Location</label>
           <input
             type="text"
+            id="location"
             name="listing[location]"
             value="<%= listing.location %>"
             placeholder="e.g. Mumbai, Maharashtra"

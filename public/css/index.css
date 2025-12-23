@@ -1,103 +1,233 @@
+/* --- Global Styles --- */
 body {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #ffffff;
+  color: #222222;
 }
+
 .container {
   flex: 1;
 }
-/* navbar */
+
+/* --- Navbar Upgrade --- */
 .navbar {
   height: 5rem;
-  background-color: white;
+  background-color: white !important;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 4rem !important;
+  z-index: 1000;
 }
+
 .fa-compass {
   color: #fe424d;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
+
 .nav-link {
   color: #222222 !important;
+  font-weight: 500 !important;
+  transition: color 0.2s;
 }
 
-/* footer */
-.f-info-links a {
-  text-decoration: none;
-  color: #222222;
+.nav-link:hover {
+  color: #fe424d !important;
 }
-.f-info-links a:hover {
-  text-decoration: underline;
+
+/* --- Smooth Filter Bar --- */
+#filters {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow-x: auto;
+  padding: 1.5rem 0 0.5rem 0;
+  background: white;
+  position: sticky;
+  top: 5rem;
+  z-index: 999;
 }
-.f-info-links,
-.f-info-socials,
-.f-info-brand {
-  width: 100%;
+
+#filters::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.filter {
+  text-align: center;
+  margin-right: 2.5rem;
+  opacity: 0.65;
+  cursor: pointer;
+  transition: 0.2s all ease;
+  min-width: fit-content;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.5rem;
+}
+
+.filter:hover {
+  opacity: 1;
+  color: #fe424d;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.filter.active {
+  opacity: 1;
+  border-bottom: 2px solid #222222;
+}
+
+.filter i {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.filter p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* --- Tax Toggle Mix --- */
+.tax-toggle {
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  height: 3.2rem;
+  padding: 0 1.2rem;
+  margin-left: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.f-info-socials i {
-  font-size: 1.2rem;
-  margin-right: 1rem;
-}
-.f-info {
-  text-align: center;
-  background-color: #ebebeb;
-  height: 8rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: space-evenly;
+  background-color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* cards */
+/* --- Modern Listing Cards --- */
 .listing-card {
   border: none !important;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.3s ease;
+  background: none !important;
 }
+
 .card-img-top {
   border-radius: 1rem !important;
   width: 100% !important;
+  height: 19rem !important;
   object-fit: cover !important;
+  transition: filter 0.3s ease;
 }
+
+.listing-card:hover .card-img-top {
+  filter: brightness(92%);
+}
+
 .card-body {
-  padding: 0 !important;
+  padding: 0.8rem 0.2rem !important;
 }
-.card-text p {
+
+.card-text {
+  line-height: 1.4;
+}
+
+.card-text b {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #222222;
+}
+
+.card-text .price {
+  font-weight: 600;
+  margin-top: 0.3rem;
+  color: #333;
+}
+
+.tax-info {
+  display: none;
+  color: #717171;
+  font-size: 0.9rem;
   font-weight: 400;
 }
-.listing-link {
-  text-decoration: none;
-}
 
-/* card effects */
+/* Card Hover Overlay (Airbnb style) */
 .card-img-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0) 30%
+  );
   opacity: 0;
-}
-.card-img-overlay:hover {
-  opacity: 0.2;
-  background-color: white;
-}
-/* new page */
-.add-btn {
-  background-color: #fe424d !important;
-  border: none !important;
+  transition: opacity 0.3s ease;
+  border-radius: 1rem !important;
 }
 
-/* edit page */
-.edit-btn {
-  background-color: #fe424d !important;
-  border: none !important;
+.listing-card:hover .card-img-overlay {
+  opacity: 1;
 }
 
-/* show page */
+/* --- Buttons & Inputs --- */
+.btn-dark {
+  background-color: #fe424d !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.6rem 1.4rem !important;
+  font-weight: 600 !important;
+}
+
+.btn-dark:hover {
+  background-color: #ff3340 !important;
+}
+
+/* --- Footer Upgrade --- */
+.f-info {
+  background-color: #f7f7f7;
+  padding: 2.5rem 0;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.f-info-socials i {
+  font-size: 1.4rem;
+  margin: 0 1rem;
+  color: #222222;
+  transition: transform 0.2s ease;
+}
+
+.f-info-socials i:hover {
+  color: #fe424d;
+  transform: scale(1.1);
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #444;
+  margin: 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- Show Page Styles --- */
 .show-img {
-  height: 30vh;
+  height: 45vh !important;
+  border-radius: 1.5rem;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-.btns {
-  display: flex;
-}
+
 .show-card {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0 !important;
+  margin-top: 2rem;
+}
+
+/* Responsive Grid */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0.5rem 1rem !important;
+  }
+  .tax-toggle {
+    display: none;
+  } /* Hide tax toggle on small tablets/mobile icons */
 }

@@ -4,90 +4,131 @@
     height: 5rem;
     background-color: white !important;
     box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid #ebebeb;
   }
 
+  /* --- Brand Typography --- */
   .navbar-brand {
-    color: #fe424d !important;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    letter-spacing: -1px;
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Space between icon and text */
-    text-decoration: none !important;
-    font-weight: 700;
   }
 
-  /* --- Centered and Larger Search Bar --- */
+  .brand-wander {
+    color: #fe424d;
+  }
+  .brand-lust {
+    color: #222222;
+    font-weight: 500;
+  }
+
+  /* --- Search Bar & Hover --- */
   .search-container {
-    border: 1px solid #ccc;
+    border: 1px solid #dddddd;
     border-radius: 40px;
     padding: 0.2rem 0.5rem 0.2rem 1.5rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-    transition: 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     background-color: white;
-    /* Increased width and centering */
     width: 100%;
-    max-width: 450px;
+    max-width: 380px;
     margin: 0 auto;
   }
 
   .search-container:hover {
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+    border-color: #fe424d50;
   }
 
   .search-inp {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    width: 100%; /* Spans the container */
   }
 
   .search-btn {
     background-color: #fe424d !important;
     color: white !important;
     border-radius: 50% !important;
-    min-width: 36px;
-    height: 36px;
-    padding: 0 !important;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease;
   }
 
-  /* --- Navigation Links --- */
+  .search-container:hover .search-btn {
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  /* --- Stylish Nav Link Hovers --- */
   .nav-link {
-    color: #222222 !important;
+    color: #fe424d !important;
     font-size: 0.9rem;
-    font-weight: 500 !important;
-    white-space: nowrap;
+    font-weight: 600 !important;
+    margin: 0 0.3rem;
+    padding: 0.5rem 1rem !important;
+    border-radius: 25px;
+    transition: all 0.3s ease;
   }
 
-  /* Responsive fixes */
+  /* Soft Red Glow Hover Effect */
+  .nav-link:hover {
+    background-color: #fe424d0d; /* Very subtle red tint */
+    color: #d1323b !important;
+    transform: translateY(-1px);
+  }
+
+  /* --- Login Button Styling --- */
+  .login-btn-custom {
+    color: #fe424d !important;
+    border: 1.5px solid #fe424d !important;
+    background-color: transparent !important;
+    font-weight: 700 !important;
+    padding: 0.4rem 1.4rem !important;
+    transition: all 0.3s ease;
+  }
+
+  .login-btn-custom:hover {
+    background-color: #fe424d !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.35);
+    transform: scale(1.05);
+  }
+
+  /* --- Mobile Handling --- */
   @media (max-width: 991px) {
     .navbar {
       height: auto;
       padding: 0.5rem 0;
     }
     .search-container {
-      max-width: 100%;
       margin: 1rem 0;
+      max-width: 100%;
     }
-    .navbar-brand span {
-      display: inline;
-    } /* Keep text visible */
+    .nav-link:hover {
+      background-color: transparent;
+      padding-left: 1.5rem !important;
+    }
   }
 </style>
 
-<nav class="navbar navbar-expand-md sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid px-md-5">
     <a class="navbar-brand" href="/">
-      <i class="fa-solid fa-compass"></i>
-      <span style="font-size: 1.5rem; letter-spacing: -1px">Wanderlust</span>
+      <span class="brand-wander">Wander</span
+      ><span class="brand-lust">lust</span>
     </a>
 
     <button
-      class="navbar-toggler"
+      class="navbar-toggler border-0 shadow-none"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav"
@@ -107,31 +148,26 @@
             class="form-control search-inp"
             name="search"
             type="search"
-            placeholder="Search destinations"
+            placeholder="Start your search"
             aria-label="Search"
           />
           <button class="btn search-btn" type="submit">
             <i
               class="fa-solid fa-magnifying-glass"
-              style="font-size: 0.9rem"
+              style="font-size: 0.8rem"
             ></i>
           </button>
         </form>
       </div>
 
       <div class="navbar-nav align-items-center">
-        <a class="nav-link" id="redirectBtn" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings">Explore</a>
         <a class="nav-link" href="/listings/new">Wanderlust your home</a>
 
         <% if (!currUser) { %>
-        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+        <a class="nav-link" href="/signup">Sign up</a>
         <a class="nav-link text-decoration-none" href="/login">
-          <div
-            class="btn btn-outline-dark rounded-pill px-3 py-1"
-            style="font-size: 0.8rem; font-weight: 600"
-          >
-            Log in
-          </div>
+          <div class="btn rounded-pill login-btn-custom">Log in</div>
         </a>
         <% } else { %>
         <div class="nav-item dropdown">
@@ -144,10 +180,9 @@
             <i class="fa-solid fa-circle-user fs-4"></i>
           </a>
           <ul
-            class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
-            style="border-radius: 1rem"
+            class="dropdown-menu dropdown-menu-end shadow border-0 mt-3 animate slideIn"
           >
-            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+            <li><a class="dropdown-item py-2" href="/logout">Log out</a></li>
           </ul>
         </div>
         <% } %>

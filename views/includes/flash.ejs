@@ -1,27 +1,118 @@
-<% if(success && success.length){ %>
-<div
-  class="alert alert-success alert-dismissible fade show col-6 offset-3"
-  role="alert"
->
-  <%= success%>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-  ></button>
+<style>
+  /* --- Flash Message Styling --- */
+  .custom-alert {
+    border: none;
+    border-left: 5px solid; /* Thick accent border */
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+  }
+
+  /* Success Variant (Green accent but matching the clean look) */
+  .alert-success-custom {
+    border-left-color: #2ecc71;
+    color: #2c3e50;
+  }
+
+  /* Error Variant (Brand Red accent) */
+  .alert-error-custom {
+    border-left-color: #fe424d; /* Brand Red */
+    color: #2c3e50;
+  }
+
+  .alert-icon {
+    margin-right: 12px;
+    font-size: 1.2rem;
+  }
+
+  /* Fixed Responsive Width */
+  .flash-container {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-close-custom {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+    line-height: 1;
+  }
+
+  .btn-close-custom:hover {
+    color: #fe424d;
+  }
+
+  /* Mobile Fix: Full width on small screens, 50% on large */
+  @media (max-width: 768px) {
+    .col-custom {
+      width: 90% !important;
+      margin: 0 auto;
+    }
+  }
+  @media (min-width: 769px) {
+    .col-custom {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<div class="flash-container container">
+  <div class="row">
+    <div class="col-custom">
+      <% if(success && success.length){ %>
+      <div
+        class="custom-alert alert-success-custom alert dismissible fade show"
+        role="alert"
+      >
+        <div>
+          <i
+            class="fa-solid fa-circle-check alert-icon"
+            style="color: #2ecc71"
+          ></i>
+          <%= success %>
+        </div>
+        <button
+          type="button"
+          class="btn-close-custom"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <% } %> <% if(error && error.length){ %>
+      <div
+        class="custom-alert alert-error-custom alert dismissible fade show"
+        role="alert"
+      >
+        <div>
+          <i
+            class="fa-solid fa-circle-exclamation alert-icon"
+            style="color: #fe424d"
+          ></i>
+          <%= error %>
+        </div>
+        <button
+          type="button"
+          class="btn-close-custom"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <% } %>
+    </div>
+  </div>
 </div>
-<%} %> <% if(error && error.length){ %>
-<div
-  class="alert alert-danger alert-dismissible fade show col-6 offset-3"
-  role="alert"
->
-  <%= error%>
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-  ></button>
-</div>
-<%} %>

@@ -1,77 +1,164 @@
-/* --- Hero Section Styling --- */
+/* --- Hero Section Styling (Asymmetric Split Look) --- */
 .hero-container {
-  height: 80vh;
+  height: 85vh;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80");
-  background-size: cover;
-  background-position: center;
+  background: #ffffff;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  color: white;
-  border-radius: 1.5rem;
+  overflow: hidden;
   margin-top: 1rem;
 }
 
+.hero-container::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0)),
+    url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80");
+  background-size: cover;
+  background-position: center;
+  border-radius: 2.5rem;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  text-align: left;
+  padding-left: 3rem;
+}
+
 .hero-content h1 {
-  font-size: 4rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 0.9;
+  color: #222;
+  margin-bottom: 1.5rem;
+  letter-spacing: -3px;
+}
+
+.hero-content h1 span {
+  color: #fe424d;
+  display: block;
 }
 
 .hero-content p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  font-weight: 300;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+  border-left: 3px solid #fe424d;
+  padding-left: 1.5rem;
 }
 
-/* --- Explore Button --- */
+/* --- Liquid Shape Explore Button --- */
 .explore-btn {
   background-color: #fe424d;
-  color: white;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  transition: 0.3s ease;
+  color: white !important;
+  padding: 1.2rem 3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 0 30px 30px 30px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(254, 66, 77, 0.4);
+  transition: 0.4s;
+  display: inline-block;
+  box-shadow: 10px 10px 0px rgba(254, 66, 77, 0.1);
 }
 
 .explore-btn:hover {
-  background-color: #d93944;
-  transform: scale(1.05);
+  border-radius: 30px 30px 30px 0;
+  transform: translateY(-5px);
+  background-color: #222;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.section-padding {
+  padding: 6rem 0;
+}
+
+.info-img {
+  width: 100%;
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Destination Cards --- */
+.dest-card {
+  border: none;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  height: 450px;
+  margin-bottom: 2rem;
+  transition: 0.4s;
+}
+
+.dest-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.6s;
+}
+
+.dest-card:hover img {
+  transform: scale(1.1);
+}
+
+.dest-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
   color: white;
 }
 
 /* --- Features Section --- */
-.features-section {
-  padding: 5rem 0;
-  text-align: center;
-}
-
-.feature-card {
-  border: none;
-  padding: 2rem;
-  transition: 0.3s;
-}
-
 .feature-card i {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: #fe424d;
   margin-bottom: 1.5rem;
+  background: #fffafa;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
 }
 
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
+/* --- Full Width Host Section --- */
+.full-host-section {
+  width: 100%;
+  border-radius: 30px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1542718610-a1d656d1884c?auto=format&fit=crop&w=1500&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect */
+  padding: 8rem 0;
+  text-align: center;
+  color: white;
+  margin-top: 5rem;
+}
+
+@media (max-width: 991px) {
+  .hero-container::after {
+    width: 100%;
+    opacity: 0.2;
   }
-  .hero-container {
-    height: 60vh;
+  .hero-content {
+    padding-left: 1rem;
+    text-align: center;
+  }
+  .hero-content h1 {
+    font-size: 3.2rem;
   }
 }
