@@ -2,7 +2,7 @@
 .hero-container {
   height: 85vh;
   width: 100%;
-  background: #ffffff;
+  background: var(--bg-white);
   position: relative;
   display: flex;
   align-items: center;
@@ -10,6 +10,7 @@
   margin-top: 1rem;
 }
 
+/* Creates the angled/split background effect */
 .hero-container::after {
   content: "";
   position: absolute;
@@ -37,27 +38,28 @@
   font-size: 5rem;
   font-weight: 900;
   line-height: 0.9;
-  color: #222;
+  color: var(--text-main);
   margin-bottom: 1.5rem;
   letter-spacing: -3px;
 }
 
+/* Highlighted text within the hero */
 .hero-content h1 span {
-  color: #fe424d;
+  color: var(--primary-color);
   display: block;
 }
 
 .hero-content p {
   font-size: 1.2rem;
-  color: #555;
+  color: var(--text-secondary);
   margin-bottom: 2.5rem;
-  border-left: 3px solid #fe424d;
+  border-left: 3px solid var(--primary-color);
   padding-left: 1.5rem;
 }
 
-/* --- Liquid Shape Explore Button --- */
+/* --- Explore Button (Liquid/Morphing Effect) --- */
 .explore-btn {
-  background-color: #fe424d;
+  background-color: var(--primary-color);
   color: white !important;
   padding: 1.2rem 3rem;
   font-size: 1rem;
@@ -72,9 +74,10 @@
 }
 
 .explore-btn:hover {
+  /* Morphs the border radius on hover for a dynamic feel */
   border-radius: 30px 30px 30px 0;
   transform: translateY(-5px);
-  background-color: #222;
+  background-color: var(--text-main);
   box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -106,6 +109,7 @@
   transition: 0.6s;
 }
 
+/* Zoom effect on card hover */
 .dest-card:hover img {
   transform: scale(1.1);
 }
@@ -123,7 +127,7 @@
 /* --- Features Section --- */
 .feature-card i {
   font-size: 2.2rem;
-  color: #fe424d;
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
   background: #fffafa;
   width: 65px;
@@ -134,7 +138,7 @@
   border-radius: 18px;
 }
 
-/* --- Full Width Host Section --- */
+/* --- Full Width Host Section (Parallax) --- */
 .full-host-section {
   width: 100%;
   border-radius: 30px;
@@ -149,6 +153,7 @@
   margin-top: 5rem;
 }
 
+/* --- Responsive Adjustments --- */
 @media (max-width: 991px) {
   .hero-container::after {
     width: 100%;

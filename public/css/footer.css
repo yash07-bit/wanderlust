@@ -1,0 +1,30 @@
+/* --- Footer Upgrade --- */
+.f-info {
+  background-color: var(--bg-light);
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+}
+
+.f-info-socials i {
+  font-size: 1.4rem;
+  margin: 0 1rem;
+  color: var(--text-main);
+  transition: transform 0.2s ease;
+}
+
+.f-info-socials i:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  margin: 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}

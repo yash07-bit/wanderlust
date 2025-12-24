@@ -1,18 +1,20 @@
-/* Sticky and Horizontal Scroll for Filters */
+/* --- Sticky and Horizontal Scroll for Filters --- */
 #filters {
   display: flex;
   align-items: center;
   padding: 1rem 0;
   position: sticky;
   top: 0;
-  background: white;
+  background: var(--bg-white);
   z-index: 10;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border-light, #ebebeb); /* Subtle separation line */
 }
+
 #filters a {
-  color: #000 !important; /* black text */
+  color: var(--text-main) !important;
   text-decoration: none !important; /* no underline */
 }
+
 .filters-center {
   display: flex;
   overflow-x: auto;
@@ -37,7 +39,7 @@
 
 .filter:hover {
   opacity: 1;
-  border-bottom: 2px solid #fe424d;
+  border-bottom: 2px solid var(--primary-color); /* Brand color highlight */
 }
 
 .filter i {
@@ -50,20 +52,20 @@
   margin-top: 0.5rem;
 }
 
-/* Tax Toggle Styling */
+/* --- Tax Toggle Styling --- */
 .tax-toggle {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-medium, #ccc);
   border-radius: 2rem;
   height: 3.25rem;
   padding: 1rem;
   margin-left: auto;
   display: flex;
   align-items: center;
-  background-color: #f8f9fa;
+  background-color: var(--bg-light, #f8f9fa);
   white-space: nowrap;
 }
 
-/* Card Improvements */
+/* --- Card Improvements --- */
 .listing-card {
   border: none !important;
   margin-bottom: 2rem;
@@ -81,11 +83,11 @@
 
 .listing-link {
   text-decoration: none;
-  color: #222;
+  color: var(--text-main);
 }
 
 .tax-label {
-  color: #fe424d;
+  color: var(--primary-color);
   font-weight: 600;
 }
 

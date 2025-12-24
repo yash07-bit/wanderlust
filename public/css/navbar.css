@@ -1,0 +1,29 @@
+/* --- Navbar Upgrade --- */
+.navbar {
+  height: 5rem; /* Fixed height for layout stability */
+  background-color: var(--bg-white) !important;
+  box-shadow: var(--shadow-soft);
+  padding: 0.5rem 4rem !important;
+  z-index: 1000;
+}
+
+.fa-compass {
+  color: var(--primary-color);
+  font-size: 2.2rem;
+}
+
+.nav-link {
+  color: var(--text-main) !important;
+  font-weight: 500 !important;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0.5rem 1rem !important;
+  }
+}
