@@ -1,6 +1,6 @@
 /* --- Navbar Upgrade --- */
 .navbar {
-  height: 5rem; /* Fixed height for layout stability */
+  height: 6.5rem !important; /* Fixed height for layout stability */
   background-color: var(--bg-white) !important;
   box-shadow: var(--shadow-soft);
   padding: 0.5rem 4rem !important;

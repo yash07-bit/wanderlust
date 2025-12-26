@@ -4,30 +4,43 @@
   align-items: center;
   padding: 1rem 0;
   position: sticky;
-  top: 0;
+  top: 0 !important; /* Ensure this matches your navbar height exactly */
   background: var(--bg-white);
-  z-index: 10;
-  border-bottom: 1px solid var(--border-light, #ebebeb); /* Subtle separation line */
+
+  /* FIX 1: Allow dropdowns to "pop out" of the bar */
+  z-index: 100;
+  overflow: visible !important;
+
+  border-bottom: 1px solid var(--border-light, #ebebeb);
 }
 
 #filters a {
   color: var(--text-main) !important;
-  text-decoration: none !important; /* no underline */
+  text-decoration: none !important;
 }
 
 .filters-center {
   display: flex;
+
+  /* FIX 2: Enable horizontal scroll but allow vertical overflow */
   overflow-x: auto;
+  overflow-y: visible;
+
   white-space: nowrap;
-  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  flex-grow: 1;
 }
 
 .filters-center::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome/Safari */
+  display: none;
 }
 
 .filter {
+  /* FIX 3: Prevent filters from disappearing on mobile */
+  flex: 0 0 auto;
+
+  position: relative; /* Necessary for dropdown positioning */
   text-decoration: none;
   text-align: center;
   margin-right: 2rem;
@@ -37,9 +50,15 @@
   cursor: pointer;
 }
 
+/* FIX 4: Ensure Dropdown is on top of everything */
+.dropdown-menu {
+  z-index: 9999 !important;
+  position: absolute;
+}
+
 .filter:hover {
   opacity: 1;
-  border-bottom: 2px solid var(--primary-color); /* Brand color highlight */
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .filter i {
@@ -63,6 +82,7 @@
   align-items: center;
   background-color: var(--bg-light, #f8f9fa);
   white-space: nowrap;
+  flex-shrink: 0; /* Prevents squishing */
 }
 
 /* --- Card Improvements --- */
