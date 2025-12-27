@@ -21,6 +21,13 @@
 .nav-link:hover {
   color: var(--primary-color) !important;
 }
+.navbar-collapse {
+  border-radius: 25px;
+  background-color: white;
+  flex-grow: 1;
+  flex-basis: 100%;
+  align-items: center;
+}
 
 @media (max-width: 992px) {
   .navbar {
