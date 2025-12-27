@@ -13,9 +13,9 @@ The platform supports user authentication, image uploads, dynamic listings, and 
 | :----------------------------------: | :-------------------------------------------: |
 | ![Home Page](./screenshots/home.png) | ![Listing Details](./screenshots/details.png) |
 
-|              User Dashboard               |            Review System             |
-| :---------------------------------------: | :----------------------------------: |
-| ![Dashboard](./screenshots/dashboard.png) | ![Reviews](./screenshots/review.png) |
+|              All Listings               |            Review System             |
+| :-------------------------------------: | :----------------------------------: |
+| ![Listings](./screenshots/listings.png) | ![Reviews](./screenshots/review.png) |
 
 ---
 
