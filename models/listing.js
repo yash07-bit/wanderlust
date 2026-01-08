@@ -15,8 +15,8 @@ const listingSchema = new Schema({
   },
 
   image: {
-    url: String, // Remove 'required: true' temporarily to test
-    filename: String, // Remove 'required: true' temporarily to test
+    url: String,
+    filename: String,
   },
 
   price: {
@@ -65,7 +65,6 @@ const listingSchema = new Schema({
   },
 });
 
-// 🗑️ Delete associated reviews when a listing is deleted
 listingSchema.post("findOneAndDelete", async (listing) => {
   if (listing) {
     await Review.deleteMany({ _id: { $in: listing.reviews } });

@@ -4,8 +4,6 @@ const passportLocalMongoose =
   require("passport-local-mongoose").default ||
   require("passport-local-mongoose");
 
-// passport-local-mongoose will automatically add:
-// username, hash, salt fields
 const userSchema = new Schema({
   email: {
     type: String,
